@@ -18,7 +18,11 @@ class _DashboardAppState extends State<DashboardApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.indigo),
-      darkTheme: ThemeData(useMaterial3: true, brightness: Brightness.dark, colorSchemeSeed: Colors.indigo),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        brightness: Brightness.dark,
+        colorSchemeSeed: Colors.indigo,
+      ),
       themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
       home: DashboardPage(
         isDark: isDark,
@@ -41,15 +45,25 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Dashboard'),
+        title: Semantics(
+          header: true,
+          child: const Text('Student Dashboard'),
+        ),
         actions: [
           Row(
             children: [
-              Icon(isDark ? Icons.dark_mode : Icons.light_mode),
+              ExcludeSemantics(
+                child: Icon(isDark ? Icons.dark_mode : Icons.light_mode),
+              ),
               const SizedBox(width: 4),
-              CupertinoSwitch(
-                value: isDark,
-                onChanged: onDarkChanged,
+              Semantics(
+                label: 'Mode Gelap',
+                hint: 'Ketuk dua kali untuk mengubah tema aplikasi',
+                toggled: isDark,
+                child: CupertinoSwitch(
+                  value: isDark,
+                  onChanged: onDarkChanged,
+                ),
               ),
               const SizedBox(width: 12),
             ],
@@ -58,7 +72,7 @@ class DashboardPage extends StatelessWidget {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final columns = constraints.maxWidth >= 1600 ? 2 : 1;
+          final columns = constraints.maxWidth >= 700 ? 2 : 1;
           return GridView.count(
             padding: const EdgeInsets.all(16),
             crossAxisCount: columns,
@@ -85,13 +99,26 @@ class DashboardCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(children: [
-          Expanded(child: Text(title)),
-          Text(value, style: Theme.of(context).textTheme.headlineSmall),
-        ]),
+    return Semantics(
+      container: true,
+      label: '$title: $value',
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              ExcludeSemantics(
+                child: Expanded(child: Text(title)),
+              ),
+              ExcludeSemantics(
+                child: Text(
+                  value,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
