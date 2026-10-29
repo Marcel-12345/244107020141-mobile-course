@@ -1,4 +1,4 @@
-# week 2
+# Week 2
 
 1. Buat kode tersebut seperti tampilan awal:
 ![tampilan](screenshots/1.png)
@@ -14,14 +14,14 @@ Sehingga hasilnya seperti ini:
 4. Jika ```mainAxisSize: MainAxisSize.min``` menjadi default (max), hasilnya akan menjadi mentok dari atas sampai bawah:
 ![kode](screenshots/8.png)
 ![tampilan](screenshots/9.png)
-5. Berikut adalah kode dan tambahan jika menambahkan kolom email tersebut:
+5. Berikut adalah kode dan tampilan jika menambahkan kolom email tersebut:
 ![kode](screenshots/10.png)
 ![tampilan](screenshots/11.png)
 6. Buat proyek baru bernama responsive_dashboard.
 7. Ketik kode tersebut hingga tampilannya seperti ini:
 ![nama](screenshots/12.png)
 ![tampilan](screenshots/13.png)
-8. Yang terjadi jika mengubah breakpoint dari 700 menjadi nilai lain (misal, 1600):
+8. Yang terjadi jika mengubah breakpoint dari 700 menjadi nilai lain (misalnya, 1600):
 ![kode](screenshots/22.png)
 Tampilan tersebut berubah menjadi 1 kolom daripada 2 kolom jika width &lt; 1600.
 ![tampilan](screenshots/23.png)
